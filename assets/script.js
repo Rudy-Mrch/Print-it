@@ -23,17 +23,34 @@ const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
 const img = document.querySelector('.banner-img');
 const dots = document.querySelector('.dots');
-
 let position = 0
-console.log(position);
+
+//activation des slides
 slideActive(position)
 
 
+//fonction pour le diaporama
+
 function slideActive() {
 	img.src = "./assets/images/slideshow/"+ slides[position].image;
-
+ updateActiveDot();
 }
 
+//fonction pour les dots
+
+function updateActiveDot() {
+	const dotElements = document.querySelectorAll('.dot');
+	dotElements.forEach((dot, index) => {
+		if (index === position) {
+			dot.classList.add('dot_selected');
+		} else {
+			dot.classList.remove('dot_selected');
+		}
+	});
+}
+
+
+//clique fleches gauches par rapport à la position 
 arrowLeft.addEventListener('click', () => {
 console.log('fleche de gauche', position);
 
@@ -47,6 +64,7 @@ if(position === 0)
 	slideActive()
 });
 
+//clique fleches droite par rapport à la position 
 arrowRight.addEventListener('click', () => {
 	console.log('fleche de droite', position);
 	if(position === slides.length-1)
@@ -60,6 +78,7 @@ arrowRight.addEventListener('click', () => {
 });
 
 
+// creation des dots
 
 slides.forEach((slide, index) => {
 	const myDot = document.createElement('div')
@@ -70,6 +89,7 @@ slides.forEach((slide, index) => {
 		myDot.className = "dot"; 
 	}
 	document.querySelector ('.dots').appendChild(myDot)
+	
 });
 
 
