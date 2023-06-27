@@ -24,12 +24,11 @@ const arrowRight = document.querySelector('.arrow_right');
 const img = document.querySelector('.banner-img');
 const dots = document.querySelector('.dots');
 let position = 0
-
-//activation des slides
-slideActive(position)
+//
 
 
-//fonction pour le diaporama
+
+//fonction active --> MAJ de la source 
 
 function slideActive() {
 	img.src = "./assets/images/slideshow/"+ slides[position].image;
@@ -52,7 +51,6 @@ function updateActiveDot() {
 
 //clique fleches gauches par rapport à la position 
 arrowLeft.addEventListener('click', () => {
-console.log('fleche de gauche', position);
 
 if(position === 0)
 	{
@@ -66,7 +64,7 @@ if(position === 0)
 
 //clique fleches droite par rapport à la position 
 arrowRight.addEventListener('click', () => {
-	console.log('fleche de droite', position);
+	
 	if(position === slides.length-1)
 	{
 		position = 0;
